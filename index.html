@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,7 +108,6 @@ button:hover{
     color:#ff4d79;
 }
 
-/* Hidden audio element */
 audio{
     display:none;
 }
@@ -140,15 +139,14 @@ audio{
 </div>
 
 <div id="b3" class="bubble hidden final">
-    ❤️ If you're smiling right now, Dholuu,
+    ❤️ muskura doooo Dholuu,
     <br><br>
-    my Good Morning mission was successful 😄✨
+    Je baat! now Morning is Good 😄✨
 </div>
 
 <!-- Background Music -->
 <audio id="bgMusic" preload="auto">
     <source src="tumsehi.mp4" type="audio/mp4">
-    Your browser does not support audio.
 </audio>
 
 <script>
@@ -180,13 +178,12 @@ function startMagic(){
     const btn = document.querySelector("button");
     btn.style.display = "none";
 
-    // Play Tum Se Hi music
+    // Start Tum Se Hi music
     const music = document.getElementById("bgMusic");
-
     music.volume = 0.8;
 
-    music.play().catch(error=>{
-        console.log("Audio could not play:", error);
+    music.play().catch(err => {
+        console.log("Music playback error:", err);
     });
 
     showBubble("b1");
@@ -240,4 +237,4 @@ window.addEventListener('resize',()=>{
 
 </body>
 </html>
-
+```
