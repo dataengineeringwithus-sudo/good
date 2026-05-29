@@ -1,0 +1,89 @@
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="tumsehi.mp4" type="audio/mp4">
+</audio>
+
+<script>
+
+function centerBubble(id){
+    const el = document.getElementById(id);
+
+    setTimeout(()=>{
+        el.style.left =
+            (window.innerWidth - el.offsetWidth)/2 + "px";
+
+        el.style.top =
+            (window.innerHeight - el.offsetHeight)/2 + "px";
+    },50);
+}
+
+function showBubble(id){
+    const el = document.getElementById(id);
+    el.classList.remove("hidden");
+    centerBubble(id);
+}
+
+function hideBubble(id){
+    document.getElementById(id).classList.add("hidden");
+}
+
+function startMagic(){
+
+    const btn = document.querySelector("button");
+    btn.style.display = "none";
+
+    // Start music after user click
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.7;
+    music.play().catch(() => {});
+
+    showBubble("b1");
+
+    setTimeout(()=>{
+        hideBubble("b1");
+        showBubble("b2");
+    },5000);
+
+    setTimeout(()=>{
+        hideBubble("b2");
+        showBubble("b3");
+    },8500);
+}
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    const hearts = ["💖","❤️","💕","💗","💞"];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left = Math.random()*100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,400);
+
+window.addEventListener('resize',()=>{
+    ['b1','b2','b3'].forEach(id=>{
+        const el=document.getElementById(id);
+
+        if(!el.classList.contains('hidden')){
+            centerBubble(id);
+        }
+    });
+});
+
+</script>
+```
